@@ -6,7 +6,6 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
     Route::permanentRedirect('/', '/api/v1/status');
 
     Route::middleware('guest')->group(function () {
-
         Route::get('status', 'Status@index')
             ->name('status');
     });
@@ -17,6 +16,5 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         Route::resource('items', 'Items')->only([
             'index', 'store', 'show', 'destroy',
         ]);
-
     });
 });

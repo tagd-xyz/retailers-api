@@ -5,11 +5,11 @@ namespace App\Http\V1\Controllers;
 use App\Http\V1\Requests\Item\Index as IndexRequest;
 use App\Http\V1\Requests\Item\Store as StoreRequest;
 use App\Http\V1\Resources\Item\Item\Collection as ItemCollection;
+use App\Http\V1\Resources\Item\Item\Single as ItemSingle;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Tagd\Core\Models\Item\Item;
 use Tagd\Core\Repositories\Interfaces\Items\Items as ItemsRepo;
-use App\Http\V1\Resources\Item\Item\Single as ItemSingle;
-use Illuminate\Http\Request;
 
 class Items extends Controller
 {
@@ -41,9 +41,11 @@ class Items extends Controller
                 'tagds.reseller',
             ],
             'filterFunc' => function ($query) use ($actingAs) {
-                $query->whereHas('tagds', function (Builder $builder) use ($actingAs) {
-                    $builder->where('retailer_id', $actingAs->id);
-                });
+                $query
+                    ->where('retailer_id', $actingAs->id);
+            // ->whereHas('tagds', function (Builder $builder) use ($actingAs) {
+                    //     $builder->where('retailer_id', $actingAs->id);
+            // });
             },
         ]);
 
@@ -110,11 +112,15 @@ class Items extends Controller
         ItemsRepo $itemsRepo,
         string $itemId
     ) {
-        $item = $itemsRepo->deleteById($itemId);
+        \Log::info('destroy request');
+
+        $item = $itemsRepo->findById($itemId);
 
         $this->authorize(
             'destroy', [$item, $this->actingAs($request)]
         );
+
+        $itemsRepo->deleteById($itemId);
 
         return response()->withData([]);
     }
