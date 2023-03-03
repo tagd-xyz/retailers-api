@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+  tagd-con-api:
+    &tagd-con-api
+    volumes:
+      - '../../../packages/core:/packages/core'
