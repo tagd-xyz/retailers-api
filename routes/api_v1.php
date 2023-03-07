@@ -14,7 +14,11 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         Route::get('me', 'Me@show');
 
         Route::resource('items', 'Items')->only([
-            'index', 'store', 'show', 'destroy',
+            'store', 'destroy',
+        ]);
+
+        Route::resource('tagds', 'Tagds')->only([
+            'index', 'show',
         ]);
     });
 });
