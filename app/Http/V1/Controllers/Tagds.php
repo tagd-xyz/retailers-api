@@ -29,7 +29,7 @@ class Tagds extends Controller
         );
 
         $tagds = $tagdsRepo->allPaginated([
-            'perPage' => $request->get(IndexRequest::PER_PAGE, 25),
+            'perPage' => $request->get(IndexRequest::PER_PAGE, 100),
             'page' => $request->get(IndexRequest::PAGE, 1),
             'orderBy' => 'created_at',
             'direction' => $request->get(IndexRequest::DIRECTION, 'asc'),
