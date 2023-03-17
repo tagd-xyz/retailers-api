@@ -13,6 +13,10 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::get('me', 'Me@show');
 
+        Route::resource('retailers', 'Retailers')->only([
+            'update',
+        ]);
+
         Route::resource('items', 'Items')->only([
             'store', 'destroy',
         ]);
