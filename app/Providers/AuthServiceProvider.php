@@ -52,7 +52,7 @@ class AuthServiceProvider extends ServiceProvider
 
                 $user = User::createFromFirebaseToken($payload);
 
-                $retailer = $retailers->assertExists($user->id, $user->name);
+                $retailer = $retailers->assertExists($user->email, $user->name);
 
                 $user->startActingAs($retailer);
 
