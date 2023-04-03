@@ -21,6 +21,10 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
             'store', 'destroy',
         ]);
 
+        Route::resource('stock', 'Stock')->only([
+            'index', 'show', 'store', 'destroy',
+        ]);
+
         Route::resource('tagds', 'Tagds')->only([
             'index', 'show',
         ]);
