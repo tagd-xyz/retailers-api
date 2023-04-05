@@ -15,9 +15,6 @@ class Retailer
     /**
      * Determine whether the user can update details.
      *
-     * @param  User  $user
-     * @param  RetailerModel  $retailer
-     * @param  ActorModel  $actor
      * @return mixed
      */
     public function update(User $user, RetailerModel $retailer, ActorModel $actor)

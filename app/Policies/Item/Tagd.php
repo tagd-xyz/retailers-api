@@ -15,7 +15,6 @@ class Tagd
     /**
      * Determine whether the user can list.
      *
-     * @param  User  $user
      * @param  RetailerModel  $retailer
      * @return mixed
      */
@@ -27,9 +26,6 @@ class Tagd
     /**
      * Determine whether the user can show details.
      *
-     * @param  User  $user
-     * @param  TagdModel  $tagd
-     * @param  RetailerModel  $retailer
      * @return mixed
      */
     public function show(User $user, TagdModel $tagd, RetailerModel $retailer)

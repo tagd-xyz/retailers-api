@@ -15,8 +15,6 @@ class Item
     /**
      * Determine whether the user can store.
      *
-     * @param  User  $user
-     * @param  RetailerModel  $retailer
      * @return mixed
      */
     public function store(User $user, RetailerModel $retailer)
@@ -27,9 +25,6 @@ class Item
     /**
      * Determine whether the user can destroy.
      *
-     * @param  User  $user
-     * @param  ItemModel  $item
-     * @param  RetailerModel  $retailer
      * @return mixed
      */
     public function destroy(User $user, ItemModel $item, RetailerModel $retailer)
