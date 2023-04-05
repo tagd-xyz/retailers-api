@@ -15,8 +15,7 @@ use Tagd\Core\Models\Actor\Retailer;
 
 class Controller extends BaseController
 {
-    use
-        AuthorizesRequests,
+    use AuthorizesRequests,
         DispatchesJobs,
         ValidatesRequests;
 

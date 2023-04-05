@@ -15,7 +15,6 @@ class Stock
     /**
      * Determine whether the user can list.
      *
-     * @param  User  $user
      * @param  RetailerModel  $retailer
      * @return mixed
      */
@@ -27,8 +26,6 @@ class Stock
     /**
      * Determine whether the user can store.
      *
-     * @param  User  $user
-     * @param  RetailerModel  $retailer
      * @return mixed
      */
     public function store(User $user, RetailerModel $retailer)
@@ -39,9 +36,6 @@ class Stock
     /**
      * Determine whether the user can show details.
      *
-     * @param  User  $user
-     * @param  StockModel  $stock
-     * @param  RetailerModel  $retailer
      * @return mixed
      */
     public function show(User $user, StockModel $stock, RetailerModel $retailer)
@@ -54,9 +48,6 @@ class Stock
     /**
      * Determine whether the user can destroy.
      *
-     * @param  User  $user
-     * @param  StockModel  $stock
-     * @param  RetailerModel  $retailer
      * @return mixed
      */
     public function destroy(User $user, StockModel $stock, RetailerModel $retailer)
