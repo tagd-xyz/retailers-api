@@ -20,7 +20,7 @@ You've got an Tagd waiting for you.
                     You've got an item waiting for you.
                     <br>
                     <small>
-                        Sign up in portal_url to claim your Tagd.
+                        Sign up to accept your Tagd.
                     </small>
                 </h2>
             </td>
