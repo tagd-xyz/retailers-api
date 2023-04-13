@@ -2,7 +2,6 @@
 
 namespace App\Http\V1\Controllers;
 
-use App\Models\Role;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Tagd\Core\Models\Actor\Consumer;
 use Tagd\Core\Models\Actor\Reseller;
 use Tagd\Core\Models\Actor\Retailer;
+use Tagd\Core\Models\User\Role;
 
 class Controller extends BaseController
 {
