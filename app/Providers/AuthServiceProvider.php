@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\User;
 use App\Support\FirebaseToken;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Tagd\Core\Repositories\Interfaces\Actors\Retailers;
+use Tagd\Core\Models\Actor\Retailer;
+use Tagd\Core\Repositories\Interfaces\Users\Users;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -37,34 +37,29 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Retailers $retailers)
+    public function boot(Users $users)
     {
         $this->registerPolicies();
 
-        Auth::viaRequest('firebase', function (
-            Request $request
-        ) use ($retailers) {
+        Auth::viaRequest('firebase', function (Request $request) use ($users) {
+            $projectId = config('services.firebase.project_id');
+            $tenantId = config('services.firebase.tenant_id');
+
             $token = $request->bearerToken();
 
             if ($token) {
-                $payload = (new FirebaseToken($token))->verify(
-                    config('services.firebase.project_id')
-                );
+                $payload = (new FirebaseToken($token))->verify($projectId);
 
-                if (
-                    config('services.firebase.tenant_id') == $payload->firebase->tenant
-                ) {
-                    $user = User::createFromFirebaseToken($payload);
-
-                    $retailer = $retailers->assertExists($user->email, $user->name);
-
-                    $user->startActingAs($retailer);
+                if ($tenantId == $payload->firebase->tenant) {
+                    \Log::info('-----> ' . $payload->user_id);
+                    $user = $users->createFromFirebaseToken($payload);
+                    $users->assertIsActingAs($user, Retailer::class);
 
                     return $user;
-                } else {
-                    return null;
                 }
             }
+
+            return null;
         });
     }
 }
