@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Listeners\Consumer as ConsumerListener;
+use App\Listeners\Tagd as TagdListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,7 +27,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
-        ConsumerListener::class,
+        TagdListener::class,
     ];
 
     /**

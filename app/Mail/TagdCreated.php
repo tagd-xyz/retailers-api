@@ -7,22 +7,31 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Tagd\Core\Models\Actor\Consumer;
+use Tagd\Core\Models\Item\Tagd;
 
-class ConsumerCreated extends Mailable
+class TagdCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $item;
+
+    public $retailer;
+
     public $consumer;
+
+    public $signUpUrl;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Consumer $consumer)
+    public function __construct(Tagd $tagd)
     {
-        $this->consumer = $consumer;
+        $this->item = $tagd->item;
+        $this->retailer = $tagd->item->retailer;
+        $this->consumer = $tagd->consumer;
+        $this->signUpUrl = 'https://www.tagd.co.uk';
     }
 
     /**
@@ -45,7 +54,10 @@ class ConsumerCreated extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.consumer.created',
+            view: 'emails.tagd.created',
+            with: [
+                'message' => $this,
+            ]
         );
     }
 
