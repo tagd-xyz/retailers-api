@@ -17,12 +17,20 @@ You've got an Tagd waiting for you.
         <tr>
             <td>
                 <h2>
-                    You've got an item waiting for you.
-                    <br>
+                    You've just purchased an item through {{ $retailer['name'] }}:
+                </h2>
+
+                <h2>
                     <small>
-                        Sign up to accept your Tagd.
+                        {{ $item['name']}}
                     </small>
                 </h2>
+
+                <p>
+                    <a href="{{ $signUpUrl }}">
+                        Sign up in our App to accept your Tagd.
+                    </a>
+                </p>
             </td>
         </tr>
         </table>
@@ -40,7 +48,9 @@ You've got an Tagd waiting for you.
     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
     <tr>
         <td class="content-block powered-by">
-        Powered by <a href="https://tagd">TagdId</a>.
+        <img style="width:5rem" src="{{$message->embed(resource_path('images/logo-black.png'))}}" alt="Tagd logo">
+        <br>
+        Powered by <a href="{{ $signUpUrl }}">TagdId</a>.
         </td>
     </tr>
     </table>

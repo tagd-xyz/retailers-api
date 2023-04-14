@@ -7,11 +7,12 @@ use App\Http\V1\Resources\Item\Item\Single as ItemSingle;
 use Illuminate\Http\Request;
 use Tagd\Core\Models\Item\Item;
 use Tagd\Core\Repositories\Interfaces\Items\Items as ItemsRepo;
+use Tagd\Core\Services\Interfaces\RetailerSales;
 
 class Items extends Controller
 {
     public function store(
-        ItemsRepo $itemsRepo,
+        RetailerSales $retailerSales,
         StoreRequest $request
     ) {
         $actingAs = $this->actingAs($request);
@@ -21,18 +22,17 @@ class Items extends Controller
             [Item::class, $actingAs]
         );
 
-        $item = $itemsRepo
-            ->createForConsumer(
-                $request->get(StoreRequest::CONSUMER),
-                $request->get(StoreRequest::TRANSACTION, ''),
-                $actingAs->id,
-                [
-                    'name' => $request->get(StoreRequest::NAME, 'Unknown'),
-                    'description' => $request->get(StoreRequest::DESCRIPTION, 'Unknown'),
-                    'type' => $request->get(StoreRequest::TYPE, 'Unknown'),
-                    'properties' => $request->get(StoreRequest::PROPERTIES, []),
-                ]
-            );
+        $item = $retailerSales->processRetailerSale(
+            $actingAs->id,
+            $request->get(StoreRequest::CONSUMER),
+            $request->get(StoreRequest::TRANSACTION, ''),
+            [
+                'name' => $request->get(StoreRequest::NAME, 'Unknown'),
+                'description' => $request->get(StoreRequest::DESCRIPTION, 'Unknown'),
+                'type' => $request->get(StoreRequest::TYPE, 'Unknown'),
+                'properties' => $request->get(StoreRequest::PROPERTIES, []),
+            ]
+        );
 
         return response()->withData(
             new ItemSingle($item)
