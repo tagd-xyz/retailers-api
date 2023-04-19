@@ -46,6 +46,18 @@ class Stock
     }
 
     /**
+     * Determine whether the user can show details.
+     *
+     * @return mixed
+     */
+    public function update(User $user, StockModel $stock, RetailerModel $retailer)
+    {
+        return $stock->retailer_id == $retailer->id
+            ? Response::allow()
+            : Response::deny();
+    }
+
+    /**
      * Determine whether the user can destroy.
      *
      * @return mixed

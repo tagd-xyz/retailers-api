@@ -18,6 +18,8 @@ class Store extends FormRequest
 
     public const TRANSACTION = 'transaction';
 
+    public const IMAGE_UPLOADS = 'imageUploads';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -32,6 +34,8 @@ class Store extends FormRequest
             self::PROPERTIES => 'array',
             self::CONSUMER => 'string|required',
             self::TRANSACTION => 'string|required',
+            self::IMAGE_UPLOADS => 'array',
+            self::IMAGE_UPLOADS . '.*' => 'string',
         ];
     }
 }
