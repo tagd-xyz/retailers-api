@@ -38,6 +38,8 @@ class Tagds extends Controller
                 'item.retailer',
                 'consumer',
                 'reseller',
+                'item.images',
+                'item.images.upload',
             ],
             'filterFunc' => function ($query) use ($actingAs) {
                 $query
@@ -61,6 +63,8 @@ class Tagds extends Controller
             'relations' => [
                 'item',
                 'item.retailer',
+                'item.images',
+                'item.images.upload',
                 'consumer',
                 'reseller',
             ],

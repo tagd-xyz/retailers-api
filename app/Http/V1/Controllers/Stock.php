@@ -4,6 +4,7 @@ namespace App\Http\V1\Controllers;
 
 use App\Http\V1\Requests\Stock\Index as IndexRequest;
 use App\Http\V1\Requests\Stock\Store as StoreRequest;
+use App\Http\V1\Requests\Stock\Update as UpdateRequest;
 use App\Http\V1\Resources\Item\Stock\Collection as StockCollection;
 use App\Http\V1\Resources\Item\Stock\Single as StockSingle;
 use Illuminate\Database\Eloquent\Builder;
@@ -36,6 +37,8 @@ class Stock extends Controller
             'direction' => $request->get(IndexRequest::DIRECTION, 'asc'),
             'relations' => [
                 'retailer',
+                'images',
+                'images.upload',
             ],
             'filterFunc' => function ($query) use ($actingAs) {
                 $query
@@ -58,6 +61,8 @@ class Stock extends Controller
         $stock = $stockRepo->findById($stockId, [
             'relations' => [
                 'retailer',
+                'images',
+                'images.upload',
             ],
         ]);
 
@@ -90,6 +95,28 @@ class Stock extends Controller
                 'type' => $request->get(StoreRequest::TYPE, 'Unknown'),
                 'properties' => $request->get(StoreRequest::PROPERTIES, []),
             ]);
+
+        return response()->withData(
+            new StockSingle($stock)
+        );
+    }
+
+    public function update(
+        UpdateRequest $request,
+        string $stockId,
+        StockRepo $stockRepo
+    ) {
+        $stock = $stockRepo->findById($stockId);
+
+        $this->authorize(
+            'update',
+            [$stock, $this->actingAs($request)]
+        );
+
+        $stock = $stockRepo->updateImages(
+            $stockId,
+            $request->get(UpdateRequest::IMAGE_UPLOADS)
+        );
 
         return response()->withData(
             new StockSingle($stock)

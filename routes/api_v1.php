@@ -22,7 +22,11 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         ]);
 
         Route::resource('stock', 'Stock')->only([
-            'index', 'show', 'store', 'destroy',
+            'index', 'show', 'store', 'update', 'destroy',
+        ]);
+
+        Route::resource('stock.uploads', 'StocksUploads')->only([
+            'store',
         ]);
 
         Route::resource('tagds', 'Tagds')->only([
