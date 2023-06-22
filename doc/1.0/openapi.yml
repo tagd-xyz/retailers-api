@@ -66,6 +66,84 @@ paths:
         '500':
           $ref: './responses/common/Unexpected.yml'
 
+  /items:
+    post:
+      tags:
+        - items
+      security:
+        - bearer: []
+      summary: Add an item created by the logged-in retailer
+      description: Add an item created by the logged-in retailer
+      operationId: postItems
+      parameters:
+        - $ref: './parameters/items/Store/Name.yml'
+        - $ref: './parameters/items/Store/Description.yml'
+        - $ref: './parameters/items/Store/Type.yml'
+        - $ref: './parameters/items/Store/Consumer.yml'
+        - $ref: './parameters/items/Store/Transaction.yml'
+        - $ref: './parameters/items/Store/Properties.yml'
+        - $ref: './parameters/items/Store/ImageUploads.yml'
+      responses:
+        '201':
+          $ref: './responses/items/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /stock:
+    post:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: Add an stock to the logged-in retailer
+      description: Add an stock to the logged-in retailer
+      operationId: postStock
+      parameters:
+        - $ref: './parameters/stock/Store/Name.yml'
+        - $ref: './parameters/stock/Store/Description.yml'
+        - $ref: './parameters/stock/Store/Type.yml'
+        - $ref: './parameters/stock/Store/Properties.yml'
+      responses:
+        '201':
+          $ref: './responses/stock/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /items/{itemId}:
+    delete:
+      tags:
+        - items
+      security:
+        - bearer: []
+      summary: Delete an item created by the logged-in retailer
+      description: Delete an item created by the logged-in retailer
+      operationId: delItemById
+      parameters:
+        - $ref: './parameters/items/ItemId.yml'
+      responses:
+        '204':
+          $ref: './responses/common/NoContent.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
   /tagds:
     get:
       tags:

@@ -36,7 +36,8 @@ class Items extends Controller
         );
 
         return response()->withData(
-            new ItemSingle($item)
+            new ItemSingle($item),
+            201
         );
     }
 
@@ -53,6 +54,6 @@ class Items extends Controller
 
         $itemsRepo->deleteById($itemId);
 
-        return response()->withData([]);
+        return response()->withData([], 204);
     }
 }

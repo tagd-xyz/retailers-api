@@ -1,4 +1,4 @@
-description: A single tagd issued
+description: A single stock
 content:
   application/json:
     schema:
@@ -9,4 +9,4 @@ content:
           type: number
           example: 200
         data:
-          $ref: './../../schemas/tagds/Single.yml'
+          $ref: './../../schemas/stock/Single.yml'

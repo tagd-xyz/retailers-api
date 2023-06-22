@@ -1,4 +1,4 @@
-description: List of tagds issued
+description: A single item issued
 content:
   application/json:
     schema:
@@ -9,4 +9,4 @@ content:
           type: number
           example: 200
         data:
-          $ref: './../../schemas/stock/Collection.yml'
+          $ref: './../../schemas/stock/Single.yml'

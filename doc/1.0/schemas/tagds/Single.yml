@@ -48,11 +48,6 @@ properties:
     description: Whether the tagd is transferred or not
     type: boolean
     example: true
-  consumer:
-    $ref: './../consumers/SingleBrief.yml'
-  reseller:
-    $ref: './../resellers/SingleBrief.yml'
-  item:
-    $ref: './../items/Single.yml'
+
 
 

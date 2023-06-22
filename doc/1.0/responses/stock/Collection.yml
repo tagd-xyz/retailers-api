@@ -1,4 +1,4 @@
-description: List of tagds issued
+description: List of stock
 content:
   application/json:
     schema:
