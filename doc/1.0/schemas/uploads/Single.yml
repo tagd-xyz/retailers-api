@@ -9,4 +9,4 @@ properties:
     description: The upload url
     type: string
     format: url
-    example: "image.jpg"
+    example: "image"

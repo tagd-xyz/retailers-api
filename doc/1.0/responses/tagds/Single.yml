@@ -9,4 +9,4 @@ content:
           type: number
           example: 200
         data:
-          $ref: './../../schemas/stock/Single.yml'
+          $ref: './../../schemas/tagds/Single.yml'
