@@ -33,6 +33,6 @@ return [
 
     'firebase' => [
         'project_id' => ENV('FIREBASE_PROJECT_ID'),
-        'tenant_id' => ENV('FIREBASE_TENANT_ID'),
+        'tenant_id' => ENV('FIREBASE_TENANT_ID', 'retailers'),
     ],
 ];
