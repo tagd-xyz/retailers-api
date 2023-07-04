@@ -1,0 +1,313 @@
+openapi: '3.0.3'
+info:
+  title: Tagd API for Retailers
+  version: '1.0'
+servers:
+  - url: http://retailers.tagd.localhost:9113/api/v1/status
+    description: Local development
+  - url: https://tagd-ret-api.qa.tclstaging.com/api/v1
+    description: QA
+  - url: https://tagd-ret-api.uat.tclstaging.com/api/v1
+    description: UAT
+
+paths:
+  /status:
+    get:
+      tags:
+        - status
+      summary: Get API status
+      description: Get API status
+      operationId: getStatus
+      responses:
+        '200':
+          $ref: './responses/status/Status.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /me:
+    get:
+      tags:
+        - me
+      security:
+        - bearer: []
+      summary: Get current user
+      description: Get current user
+      operationId: getMe
+      responses:
+        '200':
+          $ref: './responses/me/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /retailers:
+    put:
+      tags:
+        - retailers
+      security:
+        - bearer: []
+      summary: Update the logged-in retailer
+      description: Update the logged-in retailer
+      operationId: putRetailer
+      parameters:
+        - $ref: './parameters/retailers/Update/Name.yml'
+      responses:
+        '200':
+          $ref: './responses/retailers/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /items:
+    post:
+      tags:
+        - items
+      security:
+        - bearer: []
+      summary: Add an item created by the logged-in retailer
+      description: Add an item created by the logged-in retailer
+      operationId: postItems
+      parameters:
+        - $ref: './parameters/items/Store/Name.yml'
+        - $ref: './parameters/items/Store/Description.yml'
+        - $ref: './parameters/items/Store/Type.yml'
+        - $ref: './parameters/items/Store/Consumer.yml'
+        - $ref: './parameters/items/Store/Transaction.yml'
+        - $ref: './parameters/items/Store/Properties.yml'
+        - $ref: './parameters/items/Store/ImageUploads.yml'
+      responses:
+        '201':
+          $ref: './responses/items/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /stock:
+    get:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: List stock to the logged-in retailer
+      description: Add an stock to the logged-in retailer
+      operationId: getStock
+      parameters:
+        - $ref: './parameters/common/PerPage.yml'
+        - $ref: './parameters/common/Page.yml'
+        - $ref: './parameters/common/Direction.yml'
+      responses:
+        '200':
+          $ref: './responses/stock/Collection.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+    post:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: Add an stock to the logged-in retailer
+      description: Add an stock to the logged-in retailer
+      operationId: postStock
+      parameters:
+        - $ref: './parameters/stock/Store/Name.yml'
+        - $ref: './parameters/stock/Store/Description.yml'
+        - $ref: './parameters/stock/Store/Type.yml'
+        - $ref: './parameters/stock/Store/Properties.yml'
+      responses:
+        '201':
+          $ref: './responses/stock/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /stock/{stockId}:
+    get:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: Show details of a stock by its Id
+      description: Show details of a stock by its Id
+      operationId: showStock
+      parameters:
+        - $ref: './parameters/stock/StockId.yml'
+      responses:
+        '200':
+          $ref: './responses/stock/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+    put:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: Update an stock to the logged-in retailer
+      description: Update an stock to the logged-in retailer
+      operationId: putStock
+      parameters:
+        - $ref: './parameters/stock/StockId.yml'
+        - $ref: './parameters/stock/Update/ImageUploads.yml'
+      responses:
+        '200':
+          $ref: './responses/stock/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+    delete:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: Delete stock to the logged-in retailer
+      description: Delete stock to the logged-in retailer
+      operationId: delStock
+      parameters:
+        - $ref: './parameters/stock/StockId.yml'
+      responses:
+        '2004':
+          $ref: './responses/common/NoContent.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /stock/{stockId}/uploads:
+    post:
+      tags:
+        - stock
+      security:
+        - bearer: []
+      summary: Stores an upload for a stock
+      description: Stores an upload for a stock
+      operationId: postStockUploads
+      parameters:
+        - $ref: './parameters/stock/StockId.yml'
+        - $ref: './parameters/uploads/Store/FileName.yml'
+      responses:
+        '201':
+          $ref: './responses/uploads/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /items/{itemId}:
+    delete:
+      tags:
+        - items
+      security:
+        - bearer: []
+      summary: Delete an item created by the logged-in retailer
+      description: Delete an item created by the logged-in retailer
+      operationId: delItem
+      parameters:
+        - $ref: './parameters/items/ItemId.yml'
+      responses:
+        '204':
+          $ref: './responses/common/NoContent.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /tagds:
+    get:
+      tags:
+        - tagds
+      security:
+        - bearer: []
+      summary: Get list of tagds for logged-in retailer
+      description: Get list of tagds for logged-in retailer
+      operationId: getTagds
+      parameters:
+        - $ref: './parameters/common/PerPage.yml'
+        - $ref: './parameters/common/Page.yml'
+        - $ref: './parameters/common/Direction.yml'
+      responses:
+        '200':
+          $ref: './responses/tagds/Collection.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /tagds/{tagdId}:
+    get:
+      tags:
+        - tagds
+      security:
+        - bearer: []
+      summary: Get a tagd by ID
+      description: Get a tagd by ID
+      operationId: showTagds
+      parameters:
+        - $ref: './parameters/tagds/TagdId.yml'
+      responses:
+        '200':
+          $ref: './responses/tagds/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
