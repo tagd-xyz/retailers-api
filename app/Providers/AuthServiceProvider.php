@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tagd\Core\Models\Actor\Retailer;
+use Tagd\Core\Models\User\Role;
 use Tagd\Core\Repositories\Interfaces\Users\Users;
 
 class AuthServiceProvider extends ServiceProvider
@@ -48,13 +49,20 @@ class AuthServiceProvider extends ServiceProvider
             $token = $request->bearerToken();
 
             if ($token) {
-                $payload = (new FirebaseToken($token))->verify($projectId);
+                try {
+                    $payload = (new FirebaseToken($token))->verify($projectId);
 
-                if ($tenantId == $payload->firebase->tenant) {
-                    $user = $users->createFromFirebaseToken($payload);
-                    $users->assertIsActingAs($user, Retailer::class);
+                    if ($tenantId == $payload->firebase->tenant) {
+                        $user = $users->createFromFirebaseToken($payload);
+                        $user->tenant = Role::RETAILER;
+                        $users->assertIsActingAs($user, Retailer::class);
 
-                    return $user;
+                        return $user;
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Invalid bearer token: ' . $e->getMessage());
+
+                    return null;
                 }
             }
 
