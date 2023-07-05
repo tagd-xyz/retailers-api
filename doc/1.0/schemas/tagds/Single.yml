@@ -1,0 +1,53 @@
+description: A single tagd
+type: object
+properties:
+  id:
+    description: The tagd ID
+    type: string
+    example: 957f4527-018f-4e83-80e9-4a9c75d78538
+  slug:
+    description: The tagd slug
+    type: string
+    example: 35CJ-5W8H-4VHP-F3C4
+  isRoot:
+    description: Whether the tagd is the root node or not
+    type: boolean
+    example: true
+  meta:
+    description: The tagd meta
+    type: object
+  createdAt:
+    description: The tagd creation date
+    type: string
+    format: date-time
+    example: "2023-06-19T14:36:33.164758Z"
+  activatedAt:
+    description: The tagd activation date
+    type: string
+    format: date-time
+    example: "2023-06-19T14:36:33.164758Z"
+  expiredAt:
+    description: The tagd expiration date
+    type: string
+    format: date-time
+    example: "2023-06-19T14:36:33.164758Z"
+  transferredAt:
+    description: The tagd transfer date
+    type: string
+    format: date-time
+    example: "2023-06-19T14:36:33.164758Z"
+  isActive:
+    description: Whether the tagd is active or not
+    type: boolean
+    example: true
+  isExpired:
+    description: Whether the tagd is expired or not
+    type: boolean
+    example: false
+  isTransferred:
+    description: Whether the tagd is transferred or not
+    type: boolean
+    example: true
+
+
+

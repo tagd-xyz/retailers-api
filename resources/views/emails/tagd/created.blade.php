@@ -50,7 +50,7 @@ You've got an Tagd waiting for you.
         <td class="content-block powered-by">
         <img style="width:5rem" src="{{$message->embed(resource_path('images/logo-black.png'))}}" alt="Tagd logo">
         <br>
-        Powered by <a href="{{ $signUpUrl }}">TagdId</a>.
+        Powered by <a href="{{ $signUpUrl }}">Tagd</a>.
         </td>
     </tr>
     </table>
