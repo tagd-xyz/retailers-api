@@ -20,6 +20,7 @@ class Single extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'isRoot' => $this->is_root,
+            'trustScore' => $this->trust_score,
             // TODO: 'consumer' => new ConsumerSingle($this->whenLoaded('consumer')),
             'consumer' => new ConsumerSingle($this->consumer),
             'reseller' => new ResellerSingle($this->reseller),
