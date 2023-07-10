@@ -304,6 +304,73 @@ paths:
           $ref: './responses/common/NotFound.yml'
         '500':
           $ref: './responses/common/Unexpected.yml'
+    delete:
+      tags:
+        - tagds
+      security:
+        - bearer: []
+      summary: Deletes a tagd by ID
+      description: Deleted a tagd by ID
+      operationId: delTagds
+      parameters:
+        - $ref: './parameters/tagds/TagdId.yml'
+      responses:
+        '204':
+          $ref: './responses/common/NoContent.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'          
+
+  /tagds/{tagdId}/activate:
+    post:
+      tags:
+        - tagds
+      security:
+        - bearer: []
+      summary: Activates a tagd by ID
+      description: Activates a tagd by ID
+      operationId: activateTagds
+      parameters:
+        - $ref: './parameters/tagds/TagdId.yml'
+      responses:
+        '200':
+          $ref: './responses/tagds/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
+
+  /tagds/{tagdId}/deactivate:
+    post:
+      tags:
+        - tagds
+      security:
+        - bearer: []
+      summary: Deactivates a tagd by ID
+      description: ActiDeactivatesvates a tagd by ID
+      operationId: deactivateTagds
+      parameters:
+        - $ref: './parameters/tagds/TagdId.yml'
+      responses:
+        '200':
+          $ref: './responses/tagds/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'          
 
 components:
   securitySchemes:

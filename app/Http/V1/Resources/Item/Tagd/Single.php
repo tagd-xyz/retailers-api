@@ -26,6 +26,7 @@ class Single extends JsonResource
             'reseller' => new ResellerSingle($this->reseller),
             'item' => new ItemSingle($this->whenLoaded('item')),
             'meta' => $this->meta,
+            'childrenCount' => $this->children_count,
             'createdAt' => $this->created_at,
             'isActive' => $this->is_active,
             'activatedAt' => $this->activated_at,
