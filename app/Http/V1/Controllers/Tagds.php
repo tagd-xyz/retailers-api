@@ -54,21 +54,31 @@ class Tagds extends Controller
         );
     }
 
+    public function destroy(
+        Request $request,
+        TagdsRepo $tagdsRepo,
+        string $tagdId
+    ) {
+        $tagd = $this->fetchTagdById($tagdsRepo, $tagdId);
+
+        $this->authorize(
+            'destroy',
+            [$tagd, $this->actingAs($request)]
+        );
+
+        // TODO: check pre-condition for deletion
+
+        $tagdsRepo->deleteById($tagdId);
+
+        return response()->withData([], 204);
+    }
+
     public function show(
         Request $request,
         TagdsRepo $tagdsRepo,
         string $tagdId
     ) {
-        $tagd = $tagdsRepo->findById($tagdId, [
-            'relations' => [
-                'item',
-                'item.retailer',
-                'item.images',
-                'item.images.upload',
-                'consumer',
-                'reseller',
-            ],
-        ]);
+        $tagd = $this->fetchTagdById($tagdsRepo, $tagdId);
 
         $this->authorize(
             'show',
@@ -78,5 +88,59 @@ class Tagds extends Controller
         return response()->withData(
             new TagdSingle($tagd)
         );
+    }
+
+    public function activate(
+        Request $request,
+        TagdsRepo $tagdsRepo,
+        string $tagdId
+    ) {
+        $tagd = $this->fetchTagdById($tagdsRepo, $tagdId);
+
+        $this->authorize(
+            'activate',
+            [$tagd, $this->actingAs($request)]
+        );
+
+        $tagd->activate();
+
+        return response()->withData(
+            new TagdSingle($tagd)
+        );
+    }
+
+    public function deactivate(
+        Request $request,
+        TagdsRepo $tagdsRepo,
+        string $tagdId
+    ) {
+        $tagd = $this->fetchTagdById($tagdsRepo, $tagdId);
+
+        $this->authorize(
+            'deactivate',
+            [$tagd, $this->actingAs($request)]
+        );
+
+        $tagd->deactivate();
+
+        return response()->withData(
+            new TagdSingle($tagd)
+        );
+    }
+
+    private function fetchTagdById(
+        TagdsRepo $tagdsRepo,
+        string $tagdId
+    ): ?TagdModel {
+        return $tagdsRepo->findById($tagdId, [
+            'relations' => [
+                'item',
+                'item.retailer',
+                'item.images',
+                'item.images.upload',
+                'consumer',
+                'reseller',
+            ],
+        ]);
     }
 }
