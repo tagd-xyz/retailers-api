@@ -97,7 +97,8 @@ class Stock extends Controller
             ]);
 
         return response()->withData(
-            new StockSingle($stock)
+            new StockSingle($stock),
+            201
         );
     }
 
@@ -136,6 +137,6 @@ class Stock extends Controller
 
         $stockRepo->deleteById($stockId);
 
-        return response()->withData([]);
+        return response()->withData([], 204);
     }
 }
