@@ -6,7 +6,7 @@ namespace Tests\Feature\Command;
 
 use Tests\Command\Base;
 
-class Stock extends Base
+class SeedTest extends Base
 {
     /**
      * stock:seed

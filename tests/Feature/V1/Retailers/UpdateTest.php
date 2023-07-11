@@ -4,7 +4,7 @@
 
 namespace Tests\Feature\V1\Retailers;
 
-class PostTest extends Base
+class UpdateTest extends Base
 {
     /**
      * PUT /retailers/{retailer}
