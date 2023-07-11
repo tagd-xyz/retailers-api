@@ -2,7 +2,7 @@
 
 //phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 
-namespace Tests\Feature\Command;
+namespace Tests\Command\Stock;
 
 use Tests\Command\Base;
 
