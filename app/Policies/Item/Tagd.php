@@ -24,6 +24,19 @@ class Tagd
     }
 
     /**
+     * Determine whether the user can destroy.
+     *
+     * @return mixed
+     */
+    public function destroy(User $user, TagdModel $tagd, RetailerModel $retailer)
+    {
+        // TODO: add tagd status check
+        return $tagd->item->retailer_id == $retailer->id
+            ? Response::allow()
+            : Response::deny();
+    }
+
+    /**
      * Determine whether the user can show details.
      *
      * @return mixed
@@ -31,6 +44,31 @@ class Tagd
     public function show(User $user, TagdModel $tagd, RetailerModel $retailer)
     {
         return $tagd->item->retailer_id == $retailer->id
+            ? Response::allow()
+            : Response::deny();
+    }
+
+    /**
+     * Determine whether the user can activate the item
+     *
+     * @return mixed
+     */
+    public function activate(User $user, TagdModel $tagd, RetailerModel $retailer)
+    {
+        return $tagd->item->retailer_id == $retailer->id
+            ? Response::allow()
+            : Response::deny();
+    }
+
+    /**
+     * Determine whether the user can deactivate the item
+     *
+     * @return mixed
+     */
+    public function deactivate(User $user, TagdModel $tagd, RetailerModel $retailer)
+    {
+        return ($tagd->item->retailer_id == $retailer->id)
+            && 0 == $tagd->children_count
             ? Response::allow()
             : Response::deny();
     }

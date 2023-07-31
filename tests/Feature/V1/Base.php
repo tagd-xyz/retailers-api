@@ -15,6 +15,14 @@ abstract class Base extends TestCase
 
     public const URL_ME = '/api/v1/me';
 
+    public const URL_ITEMS = '/api/v1/items';
+
+    public const URL_RETAILERS = '/api/v1/retailers';
+
+    public const URL_STOCK = '/api/v1/stock';
+
+    public const URL_TAGDS = '/api/v1/tagds';
+
     /**
      * setUp any test
      */

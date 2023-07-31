@@ -30,7 +30,12 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         ]);
 
         Route::resource('tagds', 'Tagds')->only([
-            'index', 'show',
+            'index', 'show', 'destroy',
         ]);
+
+        Route::prefix('tagds/{tagd}')->group(function () {
+            Route::post('activate', 'Tagds@activate');
+            Route::post('deactivate', 'Tagds@deactivate');
+        });
     });
 });
