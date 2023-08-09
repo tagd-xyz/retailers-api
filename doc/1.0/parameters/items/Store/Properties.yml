@@ -4,4 +4,4 @@ required: false
 description: The item properties
 schema:
   type: object
-  example: {brand: "Adidas"}
+  example: {brand: "Adidas", size: "M", model: "T-Shirt"}

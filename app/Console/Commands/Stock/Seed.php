@@ -44,12 +44,9 @@ class Seed extends Command
 
         $retailer = Retailer::where('email', $retailerEmail)->firstOrFail();
 
-        $type = Type::fromName(
-            $this->choice(
-                'What type of stock?',
-                Type::names(),
-            )
-        );
+        $type_id = $this->ask('What type of stock? (ID)');
+
+        $type = Type::findOrFail($type_id);
 
         $total = $this->ask('How many?');
 

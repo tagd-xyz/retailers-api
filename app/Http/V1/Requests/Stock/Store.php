@@ -24,7 +24,7 @@ class Store extends FormRequest
         return [
             self::NAME => 'string|required',
             self::DESCRIPTION => 'string|required',
-            self::TYPE => 'string|required',
+            self::TYPE => 'numeric|required',
             self::PROPERTIES => 'array',
         ];
     }

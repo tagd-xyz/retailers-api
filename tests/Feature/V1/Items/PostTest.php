@@ -20,7 +20,7 @@ class PostTest extends Base
             ->post(static::URL_ITEMS, [
                 'name' => 'Test Item',
                 'description' => 'Test Item Description',
-                'type' => 'fashion',
+                'type' => 1,
                 'properties' => [],
                 'consumer' => 'consumer@gmail.com',
                 'transaction' => '1234567890',
@@ -47,7 +47,7 @@ class PostTest extends Base
             ->post(static::URL_ITEMS, [
                 'name' => 'Test Item',
                 'description' => 'Test Item Description',
-                'type' => 'fashion',
+                'type' => 1,
                 'properties' => [],
                 'consumer' => 'consumer@gmail.com',
                 'transaction' => '1234567890',
@@ -64,7 +64,7 @@ class PostTest extends Base
             ->post(static::URL_ITEMS, [
                 'name' => 'Test Item',
                 'description' => 'Test Item Description',
-                'type' => 'fashion',
+                'type' => 1,
                 'properties' => [],
                 // 'consumer' => 'consumer@gmail.com',
                 'transaction' => '1234567890',
