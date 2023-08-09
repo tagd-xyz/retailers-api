@@ -24,7 +24,7 @@ class PostTest extends Base
             ->post(static::URL_STOCK, [
                 'name' => 'Test Stock',
                 'description' => 'Test Stock Description',
-                'type' => 'fashion',
+                'type' => 1,
                 'properties' => [],
             ])
             ->assertStatus(201)
@@ -57,7 +57,7 @@ class PostTest extends Base
             ->post(static::URL_STOCK, [
                 'name' => 'Test Stock',
                 'description' => 'Test Stock Description',
-                'type' => 'fashion',
+                'type' => 1,
                 'properties' => [],
             ])
             ->assertStatus(403);
@@ -81,7 +81,7 @@ class PostTest extends Base
             ->post(static::URL_STOCK, [
                 // 'name' => 'Test Stock',
                 'description' => 'Test Stock Description',
-                'type' => 'fashion',
+                'type' => 1,
                 'properties' => [],
             ])
             ->assertStatus(422);

@@ -18,7 +18,7 @@ class SeedTest extends Base
         $retailer = $this->aRetailer();
 
         $this->artisan('stock:seed ' . $retailer->email)
-            ->expectsQuestion('What type of stock?', 'FASHION')
+            ->expectsQuestion('What type of stock? (ID)', '1')
             ->expectsQuestion('How many?', '1')
             ->assertSuccessful();
     }
