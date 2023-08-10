@@ -27,7 +27,7 @@ class PostTest extends Base
                 'price' => [
                     'amount' => 100,
                     'currency' => 'USD',
-                ]
+                ],
             ])
             ->assertStatus(201)
             ->assertJsonStructure([
@@ -58,7 +58,7 @@ class PostTest extends Base
                 'price' => [
                     'amount' => 100,
                     'currency' => 'USD',
-                ]
+                ],
             ])
             ->assertStatus(403);
     }
@@ -79,7 +79,7 @@ class PostTest extends Base
                 'price' => [
                     'amount' => 100,
                     'currency' => 'USD',
-                ]
+                ],
             ])
             ->assertStatus(422)
             ->assertJsonPath('error.details.consumer.0', 'The consumer field is required.');
