@@ -43,6 +43,9 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
                 Route::resource('item-types', 'ItemTypes')->only([
                     'index',
                 ]);
+                Route::resource('currencies', 'Currencies')->only([
+                    'index',
+                ]);
             });
         });
     });
