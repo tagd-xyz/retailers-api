@@ -26,6 +26,7 @@ class Items extends Controller
             $actingAs->id,
             $request->get(StoreRequest::CONSUMER),
             $request->get(StoreRequest::TRANSACTION, ''),
+            $request->get(StoreRequest::PRICE, ''),
             [
                 'name' => $request->get(StoreRequest::NAME, 'Unknown'),
                 'description' => $request->get(StoreRequest::DESCRIPTION, 'Unknown'),

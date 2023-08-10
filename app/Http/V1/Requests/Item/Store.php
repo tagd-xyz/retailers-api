@@ -18,6 +18,8 @@ class Store extends FormRequest
 
     public const TRANSACTION = 'transaction';
 
+    public const PRICE = 'price';
+
     public const IMAGE_UPLOADS = 'imageUploads';
 
     /**
@@ -34,6 +36,9 @@ class Store extends FormRequest
             self::PROPERTIES => 'array',
             self::CONSUMER => 'string|required',
             self::TRANSACTION => 'string|required',
+            self::PRICE => 'array|required',
+            self::PRICE . '.amount' => 'numeric|required',
+            self::PRICE . '.currency' => 'string|required',
             self::IMAGE_UPLOADS => 'array',
             self::IMAGE_UPLOADS . '.*' => 'string',
         ];
