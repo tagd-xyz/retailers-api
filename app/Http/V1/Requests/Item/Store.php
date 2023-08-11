@@ -20,6 +20,16 @@ class Store extends FormRequest
 
     public const PRICE = 'price';
 
+    public const PRICE_AMOUNT = 'price.amount';
+
+    public const PRICE_CURRENCY = 'price.currency';
+
+    public const LOCATION = 'location';
+
+    public const LOCATION_CITY = 'location.city';
+
+    public const LOCATION_COUNTRY = 'location.country';
+
     public const IMAGE_UPLOADS = 'imageUploads';
 
     /**
@@ -37,8 +47,11 @@ class Store extends FormRequest
             self::CONSUMER => 'string|required',
             self::TRANSACTION => 'string|required',
             self::PRICE => 'array|required',
-            self::PRICE . '.amount' => 'numeric|required',
-            self::PRICE . '.currency' => 'string|required',
+            self::PRICE_AMOUNT => 'numeric|required',
+            self::PRICE_CURRENCY => 'string|required',
+            self::LOCATION => 'array|required',
+            self::LOCATION_CITY => 'string|required',
+            self::LOCATION_COUNTRY => 'string|required',
             self::IMAGE_UPLOADS => 'array',
             self::IMAGE_UPLOADS . '.*' => 'string',
         ];
