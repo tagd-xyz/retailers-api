@@ -24,6 +24,10 @@ class PostTest extends Base
                 'properties' => [],
                 'consumer' => 'consumer@gmail.com',
                 'transaction' => '1234567890',
+                'price' => [
+                    'amount' => 100,
+                    'currency' => 'USD',
+                ],
             ])
             ->assertStatus(201)
             ->assertJsonStructure([
@@ -51,6 +55,10 @@ class PostTest extends Base
                 'properties' => [],
                 'consumer' => 'consumer@gmail.com',
                 'transaction' => '1234567890',
+                'price' => [
+                    'amount' => 100,
+                    'currency' => 'USD',
+                ],
             ])
             ->assertStatus(403);
     }
@@ -68,6 +76,10 @@ class PostTest extends Base
                 'properties' => [],
                 // 'consumer' => 'consumer@gmail.com',
                 'transaction' => '1234567890',
+                'price' => [
+                    'amount' => 100,
+                    'currency' => 'USD',
+                ],
             ])
             ->assertStatus(422)
             ->assertJsonPath('error.details.consumer.0', 'The consumer field is required.');
