@@ -29,7 +29,7 @@ class Items extends Controller
             [
                 'name' => $request->get(StoreRequest::NAME, 'Unknown'),
                 'description' => $request->get(StoreRequest::DESCRIPTION, 'Unknown'),
-                'type' => $request->get(StoreRequest::TYPE, 'Unknown'),
+                'type_id' => $request->get(StoreRequest::TYPE, 'Unknown'),
                 'properties' => $request->get(StoreRequest::PROPERTIES, []),
             ],
             $request->get(StoreRequest::IMAGE_UPLOADS, [])
