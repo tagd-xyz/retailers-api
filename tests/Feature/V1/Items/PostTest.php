@@ -28,6 +28,10 @@ class PostTest extends Base
                     'amount' => 100,
                     'currency' => 'USD',
                 ],
+                'location' => [
+                    'city' => 'London',
+                    'country' => 'GBP',
+                ],
             ])
             ->assertStatus(201)
             ->assertJsonStructure([
@@ -59,6 +63,10 @@ class PostTest extends Base
                     'amount' => 100,
                     'currency' => 'USD',
                 ],
+                'location' => [
+                    'city' => 'London',
+                    'country' => 'GBP',
+                ],
             ])
             ->assertStatus(403);
     }
@@ -79,6 +87,10 @@ class PostTest extends Base
                 'price' => [
                     'amount' => 100,
                     'currency' => 'USD',
+                ],
+                'location' => [
+                    'city' => 'London',
+                    'country' => 'GBP',
                 ],
             ])
             ->assertStatus(422)

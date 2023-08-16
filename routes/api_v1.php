@@ -40,6 +40,9 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
 
         Route::group(['namespace' => 'Ref'], function () {
             Route::prefix('ref')->group(function () {
+                Route::resource('countries', 'Countries')->only([
+                    'index',
+                ]);
                 Route::resource('currencies', 'Currencies')->only([
                     'index',
                 ]);

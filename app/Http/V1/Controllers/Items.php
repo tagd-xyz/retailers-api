@@ -27,6 +27,7 @@ class Items extends Controller
             $request->get(StoreRequest::CONSUMER),
             $request->get(StoreRequest::TRANSACTION, ''),
             $request->get(StoreRequest::PRICE, ''),
+            $request->get(StoreRequest::LOCATION, ''),
             [
                 'name' => $request->get(StoreRequest::NAME, 'Unknown'),
                 'description' => $request->get(StoreRequest::DESCRIPTION, 'Unknown'),
