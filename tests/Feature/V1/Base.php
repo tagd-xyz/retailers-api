@@ -22,6 +22,7 @@ abstract class Base extends TestCase
     public const URL_STOCK = '/api/v1/stock';
 
     public const URL_TAGDS = '/api/v1/tagds';
+
     public const URL_REF_CURRENCIES = '/api/v1/ref/currencies';
 
     public const URL_REF_COUNTRIES = '/api/v1/ref/countries';
