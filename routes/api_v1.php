@@ -18,7 +18,7 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         ]);
 
         Route::resource('items', 'Items')->only([
-            'store', 'destroy',
+            'store',
         ]);
 
         Route::resource('stock', 'Stock')->only([
