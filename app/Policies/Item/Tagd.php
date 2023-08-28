@@ -72,4 +72,16 @@ class Tagd
             ? Response::allow()
             : Response::deny();
     }
+
+    /**
+     * Determine whether the user can return the item
+     *
+     * @return mixed
+     */
+    public function return(User $user, TagdModel $tagd, RetailerModel $retailer)
+    {
+        return $tagd->item->retailer_id == $retailer->id
+            ? Response::allow()
+            : Response::deny();
+    }
 }
