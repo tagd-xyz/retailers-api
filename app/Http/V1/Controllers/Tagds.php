@@ -128,6 +128,25 @@ class Tagds extends Controller
         );
     }
 
+    public function return(
+        Request $request,
+        TagdsRepo $tagdsRepo,
+        string $tagdId
+    ) {
+        $tagd = $this->fetchTagdById($tagdsRepo, $tagdId);
+
+        $this->authorize(
+            'return',
+            [$tagd, $this->actingAs($request)]
+        );
+
+        $tagd->return();
+
+        return response()->withData(
+            new TagdSingle($tagd)
+        );
+    }
+
     private function fetchTagdById(
         TagdsRepo $tagdsRepo,
         string $tagdId

@@ -34,6 +34,8 @@ class Single extends JsonResource
             'expiredAt' => $this->expired_at,
             'isTransferred' => $this->is_transferred,
             'transferredAt' => $this->transferred_at,
+            'isReturned' => $this->is_returned,
+            'returnedAt' => $this->returned_at,
             'status' => $this->status,
         ];
     }
