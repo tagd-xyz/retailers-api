@@ -324,7 +324,7 @@ paths:
         '404':
           $ref: './responses/common/NotFound.yml'
         '500':
-          $ref: './responses/common/Unexpected.yml'          
+          $ref: './responses/common/Unexpected.yml'
 
   /tagds/{tagdId}/activate:
     post:
@@ -356,7 +356,7 @@ paths:
       security:
         - bearer: []
       summary: Deactivates a tagd by ID
-      description: ActiDeactivatesvates a tagd by ID
+      description: Deactivates a tagd by ID
       operationId: deactivateTagds
       parameters:
         - $ref: './parameters/tagds/TagdId.yml'
@@ -370,7 +370,30 @@ paths:
         '404':
           $ref: './responses/common/NotFound.yml'
         '500':
-          $ref: './responses/common/Unexpected.yml'          
+          $ref: './responses/common/Unexpected.yml'
+
+  /tagds/{tagdId}/return:
+    post:
+      tags:
+        - tagds
+      security:
+        - bearer: []
+      summary: Returns a tagd by ID
+      description: Returns a tagd by ID
+      operationId: returnTagds
+      parameters:
+        - $ref: './parameters/tagds/TagdId.yml'
+      responses:
+        '200':
+          $ref: './responses/tagds/Single.yml'
+        '401':
+          $ref: './responses/common/Unauthorized.yml'
+        '403':
+          $ref: './responses/common/Forbidden.yml'
+        '404':
+          $ref: './responses/common/NotFound.yml'
+        '500':
+          $ref: './responses/common/Unexpected.yml'
 
 components:
   securitySchemes:
