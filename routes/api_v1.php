@@ -18,7 +18,7 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         ]);
 
         Route::resource('items', 'Items')->only([
-            'store', 'destroy',
+            'store',
         ]);
 
         Route::resource('stock', 'Stock')->only([
@@ -36,17 +36,18 @@ Route::namespace('\App\Http\V1\Controllers')->group(function () {
         Route::prefix('tagds/{tagd}')->group(function () {
             Route::post('activate', 'Tagds@activate');
             Route::post('deactivate', 'Tagds@deactivate');
+            Route::post('return', 'Tagds@return');
         });
 
         Route::group(['namespace' => 'Ref'], function () {
             Route::prefix('ref')->group(function () {
-                Route::resource('item-types', 'ItemTypes')->only([
+                Route::resource('countries', 'Countries')->only([
                     'index',
                 ]);
                 Route::resource('currencies', 'Currencies')->only([
                     'index',
                 ]);
-                Route::resource('countries', 'Countries')->only([
+                Route::resource('item-types', 'ItemTypes')->only([
                     'index',
                 ]);
             });

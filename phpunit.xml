@@ -31,7 +31,7 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
-        <env name="LOG_CHANNEL" value="null"/>
+        <!-- <env name="LOG_CHANNEL" value="null"/> -->
         <!-- AWS variables added in order to pass file uploads tests -->
         <env name="AWS_ACCESS_KEY_ID" value="fake_aws_access_key_id"/>
         <env name="AWS_SECRET_ACCESS_KEY" value="fake_aws_secret_access_key_id"/>
