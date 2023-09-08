@@ -24,7 +24,7 @@ class Me extends JsonResource
                 ];
             })
             ->filter(function ($actor) {
-                return Role::RETAILER == $actor['type'];
+                return $actor['type'] == Role::RETAILER;
             });
 
         return [

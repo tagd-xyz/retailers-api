@@ -68,7 +68,7 @@ class Tagd
     public function deactivate(User $user, TagdModel $tagd, RetailerModel $retailer)
     {
         return ($tagd->item->retailer_id == $retailer->id)
-            && 0 == $tagd->children_count
+            && $tagd->children_count == 0
             ? Response::allow()
             : Response::deny();
     }
