@@ -10,5 +10,5 @@ use Tagd\Core\Tests\Traits\NeedsRetailers;
 
 abstract class Base extends \Tests\Feature\V1\Base
 {
-    use NeedsDatabase, NeedsRetailers, NeedsItems;
+    use NeedsDatabase, NeedsItems, NeedsRetailers;
 }
