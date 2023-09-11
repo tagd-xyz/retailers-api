@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 abstract class Base extends TestCase
 {
-    use UsesFactories, NeedsDatabase, NeedsRetailers;
+    use NeedsDatabase, NeedsRetailers, UsesFactories;
 
     /**
      * setUp any test
