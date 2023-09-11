@@ -43,6 +43,7 @@ class Tagds extends Controller
             ],
             'filterFunc' => function ($query) use ($actingAs) {
                 $query
+                    ->whereNull('parent_id')
                     ->whereHas('item', function (Builder $query) use ($actingAs) {
                         $query->where('retailer_id', $actingAs->id);
                     });
