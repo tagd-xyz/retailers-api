@@ -29,7 +29,7 @@ class Tagds extends Controller
         );
 
         $tagds = $tagdsRepo->allPaginated([
-            'perPage' => $request->get(IndexRequest::PER_PAGE, 100),
+            'perPage' => $request->get(IndexRequest::PER_PAGE, 1000),
             'page' => $request->get(IndexRequest::PAGE, 1),
             'orderBy' => 'created_at',
             'direction' => $request->get(IndexRequest::DIRECTION, 'asc'),
@@ -43,6 +43,7 @@ class Tagds extends Controller
             ],
             'filterFunc' => function ($query) use ($actingAs) {
                 $query
+                    ->whereNull('parent_id')
                     ->whereHas('item', function (Builder $query) use ($actingAs) {
                         $query->where('retailer_id', $actingAs->id);
                     });
