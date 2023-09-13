@@ -8,7 +8,3 @@ services:
     &tagd-ret-api
     volumes:
       - '../../../packages/core:/packages/core'
-  tagd-ret-api-schedule:
-    &tagd-ret-api
-    volumes:
-      - '../../../packages/core:/packages/core'
